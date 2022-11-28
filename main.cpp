@@ -7,7 +7,7 @@
 #include "util.h"
 
 #define MAX_SIZE 1000		// max number of vertices
-#define TEST_COUNT 10		// number of repeated tests with same graph
+#define TEST_COUNT 10		// number of repeated tests with the same graph
 #define PRINT_STATUS false	// for debugging purposes
 
 typedef std::vector<std::vector<int>> graph;

@@ -1,4 +1,10 @@
+// Author: Fidelis Prasetyo (fprasetyo@cpp.edu)
+// Desc: for Project 2, CS3310 Fall, Cal Poly Pomona 
+// github: https://github.com/fidelisprasetyo
+// github repo: https://github.com/fidelisprasetyo/shortest-paths-algorithms
+
 #pragma once
+
 #include <iostream>
 #include <vector>
 #include <iomanip>
@@ -44,6 +50,7 @@ void printDistance(const graph& m) {
 
 // Find all pairs shortest paths
 // g = General weight graph adjacency matrix
+// print = (default value = false) print the results
 void floydWarshall(const graph& g, bool print = false) {
 	int vertices = g.size();
 	// Distance matrix, stores the shortest paths

@@ -1,3 +1,8 @@
+// Author: Fidelis Prasetyo (fprasetyo@cpp.edu)
+// Desc: for Project 2, CS3310 Fall, Cal Poly Pomona 
+// github: https://github.com/fidelisprasetyo
+// github repo: https://github.com/fidelisprasetyo/shortest-paths-algorithms
+
 #pragma once
 
 #include <algorithm>	// shuffle
@@ -19,6 +24,8 @@ void resizeMat(graph& g, int size) {
 }
 
 // Randomize g to a sparse, undirected, non-negative weights, connected graph
+// g = 2D vector (matrix)
+// num_vertex = number of vertices
 void randomizeSparseGraph(graph& g, int num_vertex) {
 	int num_edge = num_vertex - 1;	// minimum number of edges possible (sparse)
 
@@ -51,6 +58,8 @@ void randomizeSparseGraph(graph& g, int num_vertex) {
 }
 
 // Randomize g to a dense, directed, non-negative weights, connected graph
+// g = 2D vector (matrix)
+// num_vertex = number of vertices
 void randomizeDenseGraph(graph& g, int num_vertex) {
 	resizeMat(g, num_vertex);
 	for(int i = 0; i < num_vertex; i++) {

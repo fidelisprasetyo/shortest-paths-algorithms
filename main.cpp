@@ -1,3 +1,8 @@
+// Author: Fidelis Prasetyo (fprasetyo@cpp.edu)
+// Desc: for Project 2, CS3310 Fall, Cal Poly Pomona 
+// github: https://github.com/fidelisprasetyo
+// github repo: https://github.com/fidelisprasetyo/shortest-paths-algorithms
+
 #include <iostream>
 #include <vector>
 #include <chrono>

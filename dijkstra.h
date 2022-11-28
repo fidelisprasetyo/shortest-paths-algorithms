@@ -1,3 +1,8 @@
+// Author: Fidelis Prasetyo (fprasetyo@cpp.edu)
+// Desc: for Project 2, CS3310 Fall, Cal Poly Pomona 
+// github: https://github.com/fidelisprasetyo
+// github repo: https://github.com/fidelisprasetyo/shortest-paths-algorithms
+
 #pragma once
 
 #include <iostream>
@@ -41,6 +46,7 @@ void printVector(const std::vector<int>& d) {
 // Find single source shortest path.
 // g = non-negative weight graph adjacency matrix
 // start = index of starting vertex
+// print = (default value = false) print the results
 void dijkstra(const graph& g, int start, bool print = false) {
 	int vertices = g.size();
     // Distance vector: contains the shortest paths from
@@ -66,6 +72,7 @@ void dijkstra(const graph& g, int start, bool print = false) {
 
 // Find all single source shortest paths
 // g = non-negative weight graph adjacency matrix
+// print = (default value = false) print the results
 void dijkstraAllPaths(const graph& g, bool print = false) {
     int vertices = g.size();
     

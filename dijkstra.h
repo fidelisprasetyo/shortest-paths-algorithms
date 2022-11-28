@@ -21,6 +21,7 @@ int nearestVertex(const std::vector<int>& d, const std::vector<bool>& isVisited)
 	return i;
 }
 
+// print the distances
 void printVector(const std::vector<int>& d) {
     std::cout << "  Dest: ";
     for(int i = 0; i < d.size(); i++) {
@@ -40,7 +41,7 @@ void printVector(const std::vector<int>& d) {
 // Find single source shortest path.
 // g = non-negative weight graph adjacency matrix
 // start = index of starting vertex
-void dijkstra(const graph& g, int start) {
+void dijkstra(const graph& g, int start, bool print = false) {
 	int vertices = g.size();
     // Distance vector: contains the shortest paths from
     // the starting vertex to the corresponding vertices
@@ -60,18 +61,19 @@ void dijkstra(const graph& g, int start) {
 			}
 		}
 	}
-	//printVector(d);
+	if (print) printVector(d);
 }
 
 // Find all single source shortest paths
 // g = non-negative weight graph adjacency matrix
-void dijkstraAllPaths(const graph& g) {
+void dijkstraAllPaths(const graph& g, bool print = false) {
     int vertices = g.size();
     
-    //std::cout << "Dijkstra algorithm result:";
+    if (print) std::cout << "DIJKSTRA ALGORITHM result:";
 
     for(int i = 0; i < vertices; i++) {
-        //std::cout << "\n> Starting vertex = " << i << '\n';
-        dijkstra(g, i);
+        if (print) std::cout << "\n> Starting vertex = " << i << '\n';
+        dijkstra(g, i, print);
     }
+	if (print) std::cout << "\n\n";
 }

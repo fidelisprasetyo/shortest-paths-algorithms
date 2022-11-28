@@ -6,15 +6,16 @@
 #include "dijkstra.h"
 #include "util.h"
 
-#define MAX_SIZE 2000
-#define TEST_COUNT 10
+#define MAX_SIZE 1000		// max number of vertices
+#define TEST_COUNT 10		// number of repeated tests with same graph
+#define PRINT_STATUS false	// for debugging purposes
 
 typedef std::vector<std::vector<int>> graph;
 
 int main() {
 	srand(time(NULL));
 
-	// sanity check
+	// ----SANITY CHECK----
 	graph g1 = 
 	{
 		{0,3,8, INF, -4},
@@ -26,33 +27,34 @@ int main() {
 
 	graph g2 =
 	{ 
-		{ 0, 4, 0, 0, 0, 0, 0, 8, 0 },
-        { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-        { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
-        { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
-        { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-        { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
-        { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
-        { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-        { 0, 0, 2, 0, 0, 0, 6, 7, 0 } 
+		{0,3,8, INF, 4},
+		{INF, 0, INF, 1, 7},
+		{INF, 4, 0, INF, INF},
+		{2, INF, 5, 0, INF},
+		{INF, INF, INF, 6, 0}
 	};
 
-	floydWarshall(g1);
-	dijkstraAllPaths(g2);
+	std::cout << "---Directed Graph with negative weights:\n";
+	floydWarshall(g1, true);
 	
-	// performance test
+	std::cout << "---Directed Graph with non-negative weights:\n";
+	dijkstraAllPaths(g2, true);
+	floydWarshall(g2, true);
+	
+	// ----PERFORMANCE TEST----
 	std::ofstream data;
-	data.open("data.csv");
+	graph sparse;	// for sparse graphs (num of edges = n - 1)
+	graph dense;	// for dense graphs (num of edges = n(n - 1)/2)
 
-	graph sparse;
-	graph dense;
+	data.open("dataxxx.csv");
 	data << "size,iteration,floyd-warshall (sparse),floyd-warshall (dense),dijkstra (sparse),dijkstra (dense)\n";
+
 	for(int n = 10; n <= MAX_SIZE; n+=10) {
-		randomizeSparseGraph(sparse, n);
-		randomizeDenseGraph(dense, n);
+		randomizeSparseGraph(sparse, n);	// sparse, undirected, non-negative weights, connected graph
+		randomizeDenseGraph(dense, n);		// dense, directed, non-negative weights, connected graph
 
 		for(int count = 0; count < TEST_COUNT; count++) {
-			std::cout << "Working on size = " << n << '\n';
+			if(PRINT_STATUS) std::cout << "\nWorking on n = " << n << '\n';
 			auto start = std::chrono::high_resolution_clock::now();
 			floydWarshall(sparse);
 			auto stop = std::chrono::high_resolution_clock::now();
@@ -76,7 +78,6 @@ int main() {
 			data << n << ',' << count << ',' << duration << ',' << duration1 << ',' << duration2 << ',' << duration3 << '\n';
 		}
 	}
-
     return 0;
     
 }

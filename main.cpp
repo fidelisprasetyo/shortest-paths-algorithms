@@ -51,7 +51,7 @@ int main() {
 	graph sparse;	// for sparse graphs (num of edges = n - 1)
 	graph dense;	// for dense graphs (num of edges = n(n - 1)/2)
 
-	data.open("dataxxx.csv");
+	data.open("data.csv");
 	data << "size,iteration,floyd-warshall (sparse),floyd-warshall (dense),dijkstra (sparse),dijkstra (dense)\n";
 
 	for(int n = 10; n <= MAX_SIZE; n+=10) {

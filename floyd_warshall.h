@@ -47,5 +47,5 @@ void floydWarshall(const graph& g) {
 			}
 		}
 	}
-	printMatrix(d);
+	//printMatrix(d);
 }

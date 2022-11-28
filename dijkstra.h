@@ -60,7 +60,7 @@ void dijkstra(const graph& g, int start) {
 			}
 		}
 	}
-	printVector(d);
+	//printVector(d);
 }
 
 // Find all single source shortest paths
@@ -68,10 +68,10 @@ void dijkstra(const graph& g, int start) {
 void dijkstraAllPaths(const graph& g) {
     int vertices = g.size();
     
-    std::cout << "Dijkstra algorithm result:";
+    //std::cout << "Dijkstra algorithm result:";
 
     for(int i = 0; i < vertices; i++) {
-        std::cout << "\n> Starting vertex = " << i << '\n';
+        //std::cout << "\n> Starting vertex = " << i << '\n';
         dijkstra(g, i);
     }
 }
